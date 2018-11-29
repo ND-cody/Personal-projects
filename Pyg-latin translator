@@ -1,0 +1,12 @@
+#!/usr/bin/env python
+
+pyg = 'ay'
+
+original = raw_input('Enter a word:').lower()
+#Takes the input and makes it lower case
+if len(original) > 0 and original.isalpha():
+#Checks if string is empty or contains a non-alphabetic value
+  new_word = original[1:] + original[0] + pyg
+  print new_word
+else:
+  print 'empty'
