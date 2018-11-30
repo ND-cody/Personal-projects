@@ -2,11 +2,36 @@
 
 pyg = 'ay'
 
-original = raw_input('Enter a word:').lower()
-#Takes the input and makes it lower case
-if len(original) > 0 and original.isalpha():
-#Checks if string is empty or contains a non-alphabetic value
-  new_word = original[1:] + original[0] + pyg
-  print new_word
-else:
-  print 'empty'
+def to_pyg(original):
+    #Defines a function which changes the word to pyg-latin
+    if len(original) > 0 and original.isalpha():
+    #Checks if string is empty or contains a non-alphabetic value
+        new_word = original[1:] + original[0] + pyg
+        print new_word
+    else:
+        print "Sorry this is not a valid input. Please only use letters"
+
+def to_eng(original):
+    #Defines a function which changes the word to english
+    if len(original) > 0 and original.isalpha() and original[len(original) - 2:] == "ay":
+    #Checks if string is empty or contains a non-alphabetic value
+        new_word = original[len(original) - 3] + original[:len(original) - 3]
+        print new_word
+    else:
+        print "Sorry this is not a valid input. Please only use letters and words that end in 'ay'"
+
+start = raw_input("Hello welcome to the pyp-latin translator." + "\n" + "This program translates both to and from pyg-latin.To begin please press enter")
+
+to = raw_input("Would you like to translate to pyg-latin?(Y/N)").lower()
+#We find out if the user wants to translate to pyg-latin or englis and call the correct fuction
+if to == "y" or to == "yes":
+    #We test for the two most likely inputs from the user
+    original = raw_input('Enter a word:').lower()
+    to_pyg(original)
+elif to == "n" or to == "no":
+    en = raw_input("Would you like to translate to english?(Y/N)") 
+    if en == "y" or en == "yes":
+        original = raw_input('Enter a word:').lower()
+        to_eng(original)
+    else:
+        print "Sorry this program only translates from english to pyg-latin and vice versa"
